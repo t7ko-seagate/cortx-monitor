@@ -30,3 +30,4 @@ CONSUL_PATH="/opt/seagate/$PRODUCT_FAMILY/hare/bin"
 CONSUL_FALLBACK_PATH="/opt/seagate/$PRODUCT_FAMILY/sspl/bin"
 # This file will be created when sspl is being configured for node replacement case
 REPLACEMENT_NODE_ENV_VAR_FILE="/etc/profile.d/set_replacement_env.sh"
+DATA_PATH="/var/$PRODUCT_FAMILY/sspl/data"
