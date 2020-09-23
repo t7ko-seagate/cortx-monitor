@@ -27,6 +27,9 @@ script_dir=$(dirname $0)
 # Import common constants
 . $script_dir/constants.sh
 
+STATE_FILE="$DATA_PATH/state.txt"
+
+
 [ "${1}" = "CS-L" -o "${1}" = "CS-G" ] && {
     id -u sspl-ll &>/dev/null || /usr/sbin/useradd \
         -s /sbin/nologin  \
@@ -81,3 +84,9 @@ mkdir -p /etc/sspl-ll/templates/snmp
 cp -rf /opt/seagate/$PRODUCT_FAMILY/sspl/conf/snmp/* /etc/sspl-ll/templates/snmp
 
 rm -Rf /var/run/sspl_ll
+
+# Grant file permission on sspl state file created by resourse agent(HA)
+[ -f $STATE_FILE ] && {
+    chown sspl-ll:sspl-ll $STATE_FILE
+    chmod 644 $STATE_FILE
+}
